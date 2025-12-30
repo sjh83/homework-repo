@@ -15,15 +15,66 @@
       <li>학생 객체 복사후 우너본과 독립적으로 수정 확인</li>
 
       <script>
+        function getProperty(obj, key) {
+          return obj[key];
+        }
+        function averageScore(scores) {
+          let sum = 0;
+          let count = 0;
+
+          for (let key in scores) {
+            sum += scores[key];
+            count++;
+          }
+          return sum / count;
+        }
+
         const user = {
           name: "신진호",
-          ame: 28,
+          age: 28,
           scores: {
             math: 30,
             english: 40,
             korean: 100,
           },
         };
+        /*
+        const key = "name";
+        console.log(user[key]);
+        */
+        console.log("이름: " + getProperty(user, "name"));
+        console.log(`나이: ${getProperty(user, "age")}`);
+        /*
+        const scores = getProperty(user, "scores");
+        console.log(scores);
+
+        const values = Object.values(user.scores);
+        console.log(values);
+        
+        let sum = 0;
+        for (let i = 0; i < values.length; i++) {
+          sum += values[i];
+        }
+        console.log(sum);
+
+        const average = sum / values.length;
+        console.log(average);
+        */
+        console.log("평균점수: " + averageScore(user.scores));
+
+        /* 깊은 복사 */
+        const deep1 = JSON.parse(JSON.stringify(user));
+        /* console.log(`깊은복사: ${deep1}`);    이상하게 출력됨 [object Object] */
+        /* console.log("깊은 복사: " + deep1);   이것도 똑같이 출력됨 [object Object] */
+        console.log("깊은 복사: ", deep1);
+        /* 최신 버전 깊은 복사 */
+        const deep2 = structuredClone(user);
+        console.log("최신 버전 깊은 복사", deep2);
+
+        deep1.name = "진호";
+        delete deep1.age; /* deep1만 나이 삭제 됨 */
+        console.log(deep1.name); /* 복사본 바뀜 */
+        console.log(user.name); /* 원본 바뀜 */
       </script>
     </ul>
   </body>
