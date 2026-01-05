@@ -25,8 +25,17 @@
         const btn = e.target.closest("button");
 
         if (!btn || !btnGroup.contains(btn)) return;
+        console.log("선택된 버튼", btn.dataset.action);
 
-        console.log("선택된 버튼", btn.textContent);
+        const action = btn.dataset.action;
+
+        if (action === "add") {
+          console.log("추가 실행");
+        } else if (action === "edit") {
+          console.log("수정 실행");
+        } else {
+          console.log("삭제 실행");
+        }
       });
     </script>
   </body>
