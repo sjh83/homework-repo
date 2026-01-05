@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button-group {
+        display: flex;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="button-group">
+      <button data-action="add">추가</button>
+      <button data-action="edit">수정</button>
+      <button data-action="delete">삭제</button>
+    </div>
+
+    <script>
+      const btnGroup = document.querySelector(".button-group");
+
+      btnGroup.addEventListener("click", function (e) {
+        const btn = e.target.closest("button");
+
+        if (!btn || !btnGroup.contains(btn)) return;
+
+        console.log("선택된 버튼", btn.textContent);
+      });
+    </script>
+  </body>
+</html>
