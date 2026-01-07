@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function createCounter() {
+        let count = 0;
+
+        return {
+          increment() {
+            count++;
+            return count;
+          },
+          decrement() {
+            count--;
+            return count;
+          },
+          getValue() {
+            return count;
+          },
+          reset() {
+            count = 0;
+            return count;
+          },
+        };
+      }
+      const c1 = createCounter();
+      const c2 = createCounter();
+      const c3 = createCounter();
+      const c4 = createCounter();
+
+      console.log("c1:", c1.increment());
+      console.log("c2:", c2.increment());
+      console.log("c2:", c2.increment());
+      console.log("c3:", c3.increment());
+      console.log("c4:", c4.increment());
+      console.log("c4:", c4.increment());
+
+      console.log("c4:", c4.reset());
+      console.log("c2:", c2.decrement());
+    </script>
+  </body>
+</html>
