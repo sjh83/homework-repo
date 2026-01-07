@@ -48,12 +48,23 @@
     // 2. bind로 해결하기
     const fixedCall = ???;
     fixedCall(); */
+
+      const hero = {
+        name: "Batma",
+        call() {
+          console.log(this.name);
+        },
+      };
       /* 'stolenCall'실행 시 undefined가 나오는 이유 */
       /* javaScript에서는 함수 호출 시점에 this가 결정된다
        * hero.call을 변수에 할당하면 객체와 끊어져 일반함수 호출이 되고
        * this.name undefined가 된다
        * 예외로 화살표함수만 정의 시점에 this가 결정된다(상위스코프 this 사용)
        */
+      const fixedCall = hero.call.bind(hero);
+
+      /* console.log(fixedCall()); */
+      fixedCall();
     </script>
   </body>
 </html>
