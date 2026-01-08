@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      지저분한 상품 데이터를 filter → map → sort 파이프라인을 통해 깔끔하게
+      정제해보세요
+    </h1>
+    <ul>
+      요구사항
+      <li>1. 'filter': 재고(stock > 0)가 있는 상품만 추출하세요.</li>
+      <li>
+        'mpa': 10% 할인가를 적용한 'salePrice' 속성을 추가하세요. (스프레드
+        '...P'활용)
+      </li>
+      <li>'sort': 'salePrice' 기준으로 오름차순 정렬하세요.</li>
+    </ul>
+    <script>
+      const products = [
+        { name: "Mouse", price: 50000, stock: 10 },
+        { name: "Key", price: 15000, stock: 0 },
+        { name: "Monitor", price: 400000, stock: 5 },
+        { name: "Speaker", price: 80000, stock: 0 },
+      ];
+
+      const result = [...products]
+        .filter((p) => p.stock > 0)
+        .map((p) => ({ ...p, salePrice: p.price * 0.9 }))
+        .sort((a, b) => a.salePrice - b.salePrice);
+
+      console.log(products);
+      console.log(result);
+    </script>
+  </body>
+</html>
