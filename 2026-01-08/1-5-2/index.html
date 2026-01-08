@@ -5,5 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1>카페 주문 흐름 시뮬레이션</h1>
+    <h2>
+      손님(동기), 주문(비동기), VIP(마이크로태스크)가 섞여있는 상황을 코드로
+      작성하고 실행 순서를 검증해보세요!
+    </h2>
+
+    <ul>
+      요구사항
+      <li>위 코드를 실행했을 때 콘솔에 출력될 순서를 적으세요.</li>
+      <li>왜 "일반 손님"보다 "VIP"가 먼저 나오는지 설명하세요.</li>
+      <li>setTimeout 시간을 1초로 늘리면 순서가 어떻게 변할지 예측해보세요.</li>
+    </ul>
+
+    <script>
+      console.log("1. 가게 오픈");
+
+      setTimeout(() => {
+        console.log("2. 일반 손님 주문 완료");
+      }, 0);
+
+      Promise.resolve().than(() => {
+        console.log("3. VIP 손님 입장");
+      });
+
+      console.log("4. 재료 준비");
+
+      // 1. → 4. → 3. → 2 순서대로 나올 거 같음
+      //
+    </script>
+  </body>
 </html>
