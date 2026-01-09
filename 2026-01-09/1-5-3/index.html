@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>피자 배달 시뮬레이션</h1>
+    <p>
+      중첩된 콜백으로 작성된 피자 주문 시스템을 async/await 를 사용하여
+      리팩토링하세요.
+    </p>
+    <script>
+      // 1초뒤 성공하는 가짜함수
+
+      const orderPizza = (name) =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve(name), 1000);
+        });
+      const makeDough = (orderld) => {
+        throw new Error("반죽 터짐");
+      };
+      /*new Promise((resolve) => {
+          setTimeout(() => resolve({ dough: true }), 1000); 
+        });*/
+      const bakePizza = (dough) =>
+        new Promise((resolve) => {
+          setTimeout(() => resolve({ name: "Pepperoni" }), 1000);
+        });
+
+      async function deliverPizza() {
+        try {
+          const order = await orderPizza("Pepperoni");
+          const make = await makeDough(order);
+          const bake = await bakePizza(make);
+
+          console.log("완성", bake);
+          return bake;
+        } catch (err) {
+          console.error("배달 실패!", err.message);
+        }
+      }
+      deliverPizza();
+    </script>
+  </body>
+</html>
