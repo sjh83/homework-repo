@@ -48,3 +48,9 @@ function sumDivisors(n) {
   return sum;
 }
 console.log(sumDivisors(12));
+// 과제 힌트
+/*function sumDivisors(n) {
+  return getDivisors(n)
+    .reduce((a, c) => a + c, 0);
+}
+ */
