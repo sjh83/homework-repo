@@ -1,0 +1,23 @@
+:root {
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  width: 300px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  background-color: rgb(116, 115, 115);
+}
+
+.mainContent {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 4px;
+}
